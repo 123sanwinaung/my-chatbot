@@ -39,7 +39,11 @@ async def message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         partner_id = pairs[user_id]
         await context.bot.send_message(partner_id, update.message.text)
 
-app = ApplicationBuilder().token("8074695579:AAGU1Aen9rl-ZzJ8sp2H78nwJPC_ClXE_ps").build()
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
 
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("stop", stop))
